@@ -1,6 +1,7 @@
 package org.iesfm.rest.swing;
 
 import org.iesfm.rest.Flight;
+import org.iesfm.rest.clients.ErrorHandler;
 import org.iesfm.rest.clients.FlightClient;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.HttpClientErrorException;
@@ -13,7 +14,11 @@ public class AirlineSwingMain {
         JFrame frame = new JFrame("Aerolínea");
         JPanel panel = new JPanel();
 
-        FlightClient flightAPI = new FlightClient(new RestTemplateBuilder().rootUri("http://localhost:8080").build());
+        FlightClient flightAPI = new FlightClient(
+                new RestTemplateBuilder()
+                        .errorHandler(new ErrorHandler())
+                        .rootUri("http://localhost:8080")
+                        .build());
 
         List<Flight> flights = flightAPI.list(null);
         for (Flight flight : flights) {

@@ -45,6 +45,12 @@ public class FlightClient implements FlightAPI {
 
     @Override
     public ResponseEntity<Void> createFlight(Flight flight) {
-        return null;
+        return restTemplate.postForEntity("/flights", flight, Void.class);
+    }
+
+    @Override
+    public void updateFlight(String flightNumber, Flight flight) {
+
+        restTemplate.put("/flights/" + flightNumber, flight);
     }
 }
