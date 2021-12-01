@@ -57,4 +57,13 @@ public class Flight {
     public int hashCode() {
         return Objects.hash(flightNumber, origin, destination);
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightNumber='" + flightNumber + '\'' +
+                ", origin='" + origin + '\'' +
+                ", destination='" + destination + '\'' +
+                '}';
+    }
 }
